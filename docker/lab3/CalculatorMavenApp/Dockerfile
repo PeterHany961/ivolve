@@ -1,9 +1,8 @@
-FROM maven:3.9-eclipse-temurin-17
+FROM eclipse-temurin:17-jre
 RUN useradd -m appuser
 WORKDIR /app
-COPY . .
+COPY target/calculator.jar  .
 RUN chown -R appuser:appuser /app
 USER appuser
-RUN mvn package
 EXPOSE 8080
-CMD ["sh", "-c", "java -jar target/*.jar"]
+CMD ["java", "-jar", "calculator.jar"]
