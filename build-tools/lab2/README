@@ -1,0 +1,46 @@
+
+
+
+# Lab 1
+### 1) Clone the repo
+```
+git clone https://github.com/Ibrahim-Adel15/CalculatorGradleApp.git
+```
+### 2) run unit test
+```
+gradle test
+```gradle test
+
+Welcome to Gradle 8.14.4!
+
+Here are the highlights of this release:
+ - Java 24 support
+ - GraalVM Native Image toolchain selection
+ - Enhancements to test reporting
+ - Build Authoring improvements
+
+For more details see https://docs.gradle.org/8.14.4/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+BUILD SUCCESSFUL in 19s
+3 actionable tasks: 3 executed
+
+gradle build
+ 
+peter@Peter:~/ivolve/build-tools/lab2/CalculatorGradleApp$ gradle build
+
+BUILD SUCCESSFUL in 1s
+7 actionable tasks: 7 up-to-date
+
+
+### 4) Run the jar file
+peter@Peter:~/ivolve/build-tools/lab2/CalculatorGradleApp/build/libs$ java -jar calculator.jar
+Enter first number: 5
+Enter second number: 5
+a = 5.0, b = 5.0
+Sum: 10.0
+Subtract: 0.0
+Multiply: 25.0
+Divide: 1.0
+peter@Peter:~/ivolve/build-tools/lab2/CalculatorGradleApp/build/libs$```
