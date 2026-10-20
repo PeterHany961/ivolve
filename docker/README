@@ -1,0 +1,20 @@
+# Lab 3
+
+### 1) Approach 1: Build the app inside Docker (Dockerfile-mvn)
+bash
+docker build -t app1 .
+
+
+### 2) Approach 2: Build the app locally then copy the jar (Dockerfile-jar)
+bash
+docker build -t app2 . 
+
+
+### 3) Images Size Comparison
+bash
+docker images
+
+
+REPOSITORY   TAG      IMAGE ID       SIZE
+app1        latest   26661cd47021   814MB
+app2        latest   587af137713f   427MB
