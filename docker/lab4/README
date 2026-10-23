@@ -1,0 +1,31 @@
+# Lab 4
+
+### 1) Build Docker Image (Multi-stage Build & Optimization)
+```bash
+docker build -t image2 .
+```
+
+### 2) Run the container
+```bash
+docker run -d -p 8080:8080 --name multistage-app image2
+```
+
+### 3) Save image to tar archive
+```bash
+docker save image -o multistage.tar 
+```
+
+### 4) Load image from tar archive
+```bash
+docker load -i multistage.tar
+```
+
+### 5) Images Size Comparison (Multi-stage vs Single-stage with Maven)
+```bash
+docker images
+```
+```
+REPOSITORY   TAG      IMAGE ID       SIZE
+image1     latest    a8f08d1acc74    671MB
+image2     latest    5f79cc38e6c8    522MB
+```
