@@ -1,0 +1,55 @@
+# Lab 11: Managing and Enforcing Resource Quotas in Kubernetes
+
+## 📌 Objective
+The goal of this lab is to restrict and manage resource consumption within a specific Kubernetes Namespace by creating and enforcing a `ResourceQuota`. This ensures that a single application or team cannot consume all the resources of the cluster.
+
+---
+
+## 🛠️ Prerequisites & Environment
+* **Cluster:** Kubernetes Cluster (Single-Node / Master Node)
+* **Tool:** `kubectl`
+* **Namespace:** `ivolve`
+
+---
+
+## 📝 Lab Steps & Implementation
+
+### 1. Create a Dedicated Namespace
+First, we created a namespace named `ivolve` to isolate our resources for this lab:
+```bash
+kubectl create namespace ivolve
+2. Define the ResourceQuota Manifest (quota.yaml)
+We created a resource quota configuration file to limit the maximum number of Pods allowed inside the ivolve namespace to a maximum of 3 pods:
+
+YAML
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: ivolve-quota
+  namespace: ivolve
+spec:
+  hard:
+    pods: "3"
+3. Apply the ResourceQuota
+We applied the manifest to the ivolve namespace:
+
+Bash
+kubectl apply -f quota.yaml -n ivolve
+4. Test the Quota Policy
+To verify that the quota works, we attempted to deploy an application (or scale a deployment) requesting 4 replicas while the limit is set to 3.
+
+Kubernetes successfully allowed the first 3 pods to run/be created.
+
+The 4th pod was blocked/restricted by the quota policy, proving that our enforcement mechanism works as expected.
+
+🔍 Verification & Screenshots
+To verify the quota status and limits, we ran the following commands:
+
+Check Quota Details & Limits:
+
+Bash
+kubectl describe quota ivolve-quota -n ivolve
+Check Pods Status (Showing restriction at 3 pods):
+
+Bash
+kubectl get pods -n ivolve
